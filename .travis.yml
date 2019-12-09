@@ -1,0 +1,34 @@
+language: generic
+
+dist: bionic
+
+before_install:
+ - sudo apt-get install lilypond
+
+install:
+  - travis_wait 45 bash ./texlive/texlive_install.sh
+  - export PATH="/tmp/texlive/bin/x86_64-linux:$PATH"
+
+cache:
+  directories:
+    - /tmp/texlive
+    - $HOME/.texlive
+
+# Change working directory so including files will work
+before_script: cd $TRAVIS_BUILD_DIR/
+script:
+  - sh compile.sh musica.lytex
+
+before_deploy:
+  # Set up git user name and tag this commit
+  - git config --local user.name "Daniel Nunes"
+  - git config --local user.email "daniel.henri.nunes@gmail.com"
+  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+  - git tag $TRAVIS_TAG
+
+deploy:
+  provider: releases
+  api_key:
+    secure: "pIsxDZQpmO93ye0lyDypBPeaLiYMUyBjApyK5LYqQBLdOXBLpdJAiQ+wghtItlY8/r/HI8sIYxcZd8aUo8NOSVphYY6eQfFazOxUv3KTDx9M1hpFz6bi0hX/MwLds6bXOoB37nUXmI55+fBpUCwbOvHAfcCAZL5FkU4M+wHmM+B6joK+O1EXoJQoACuevlY9bOT27zXxZmVprzQMOuKxtr2cHbat/A/HGdt9Tyau3U5iniUn1memXcmSF/x939tcNOMIYBg3c5A3o9om0wwYj3tq8Se+uuCkue9y2T+xeFPeobpQH2TswpLRyNoOWxCie4HUninoabBS+0hP8bEbtACxAHIEgIaE8E2P8Uw96lKFGjfBFl567MkpgIcUXZBXRUGOOeqc11Y5kE9aEcldC1hd5cklGMje9FTwaTImMT+9rKr4i92EMhTPjZs6skvJ7qcXCpxkNckLvnXgtVl+D43s553EIywsJvXMJZFRxGUz+/+14ZgCO1CQgOEnbm8oIg/jYupcJik2ImNLcaq4/GDYoBKbYisQuADUFCUrzSWPs88UXWIsNpdW12RLKx6mqek1PWJsHhnKPMkXVcHa4djNDqsOgV7+SSaUplJp3uHwFpQMhQJXZtMazof+EID32crAqQlSuR2XNwnnmnxk66hV9FJ4ktzxS5E2yQs4xU0="
+  file: musica.pdf
+  skip_cleanup: true
