@@ -28,9 +28,9 @@
 \usepackage{booktabs}
 \usepackage{enumerate}
 
-\title{{\Huge \textbf{Teoria Musical}}}
-\date{}
-\author{{\Large Daniel Nunes}}
+\title{{\Huge \textbf{Introdução a Teoria Musical}}}
+\date{\today}
+\author{Daniel Nunes}
 
 \begin{document}
 
