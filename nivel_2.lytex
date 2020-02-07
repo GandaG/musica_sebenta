@@ -1,0 +1,960 @@
+% MIT License
+%
+% Copyright (c) 2019 Daniel Nunes
+%
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+%
+% The above copyright notice and this permission notice shall be included in all
+% copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+% SOFTWARE.
+
+\documentclass[12pt]{report}
+\usepackage[portuguese]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{subfig}
+\usepackage{harmony}
+\usepackage{booktabs}
+\usepackage{enumerate}
+\usepackage{xr}
+
+\externaldocument{nivel_1}
+
+\title{{
+    \Huge \textbf{Introdução a Teoria Musical} \\
+    \large Nível 2
+    }}
+\date{\today}
+\author{Daniel Nunes}
+
+\begin{document}
+
+\maketitle
+
+\stepcounter{chapter}
+
+\chapter {Harmonização}
+
+\section {Compassos Compostos}
+
+Como já foi falado na secção~\ref{compassos_simples}, todos os compassos em que
+cada tempo pode ser divido em duas figuras são compassos simples. A este tipo
+de subdivisão dá-se o nome de \emph{subdivisão binária}. Os \emph{compassos
+compostos} são aqueles que estão em \emph{subdivisão ternária}, em que cada
+tempo se pode dividir em três figuras.
+
+Como exemplo, num compasso composto com fórmula \Takt{9}{8} cada compasso terá
+3 tempos (ternário) e cada tempo irá corresponder a uma semínima pontuada,
+\Vier\Pu. Outros exemplos estão na figura~\ref{compassos_compostos_exemplos}.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[Compasso Composto Binário]{
+        \begin[fragment]{lilypond}
+          \new Staff {
+              \clef treble
+              \tempo 4. = 1
+              \time 6/8
+              %a'4( d'8) \tuplet 3/2 {a'8 g'8 f'8} b'8
+              b'4. b'8 b' b'
+              a'8 a' a' a'4 a'8
+        }
+        \end{lilypond}
+    }
+    \subfloat[Compasso Composto Ternário]{
+        \begin[fragment]{lilypond}
+          \new Staff {
+              \clef treble
+              \tempo 4. = 1
+              \time 9/8
+              %g'8( d') b g'4 a'8 r8 g'8 r8
+              b'4. b'8 b' b' b'4 b'8
+              a'8 a' a' a'4 a'8 a'4.
+        }
+        \end{lilypond}
+    }\par
+    \subfloat[Compasso Composto Quaternário]{
+        \begin[fragment]{lilypond}
+          \new Staff {
+              \clef treble
+              \tempo 4. = 1
+              \time 12/8
+              f'8 g' a' d'4 r8 g'8 d' g' b'4.
+        }
+        \end{lilypond}
+    }
+    \caption{Exemplos de compassos compostos.}
+    \label{compassos_compostos_exemplos}
+\end{figure}
+
+\section {Intervalos}
+
+A distância entre duas notas é dada por um \emph{intervalo}. Os intervalos são
+medidos em tons e classificam-se em \emph{número} e \emph{qualidade}.
+
+Podemos chegar ao número do intervalo contando os espaços e linhas da pauta
+entre as duas notas, incluindo as posições de ambas as notas ou contando o
+número de notas entre as duas notas na escala diatónica da pimeira, incluindo
+ambas as notas (figura~\ref{intervalos_numero}).
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[Uníssono]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              \textLengthOn
+              <c c>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \subfloat[Segunda]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              \textLengthOn
+              <c d>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \subfloat[Terceira]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              \textLengthOn
+              <c e>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \subfloat[Quarta]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              \textLengthOn
+              <c f>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }\par
+    \subfloat[Quinta]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              \textLengthOn
+              <c g'>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \subfloat[Sexta]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              \textLengthOn
+              <c a'>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \subfloat[Sétima]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              \textLengthOn
+              <c b'>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \subfloat[Oitava]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              \textLengthOn
+              <c c'>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \caption{Todos os números de intervalo até à oitava.}
+    \label{intervalos_numero}
+\end{figure}
+
+Após sabermos o número do intervalo, podemos chegar à sua qualidade. Esta vai
+ser uma de entre: \emph{Perfeito}, \emph{Maior}, \emph{Menor}, \emph{Aumentado}
+e \emph{Diminuto}.
+
+Os intervalos perfeitos são assim chamados por serem tradicionalmente
+considerados perfeitamente consonantes. Só os intervalos uníssonos, quartas,
+quintas e oitavas podem ser perfeitos. Se aumentarmos um semitom a uma
+intervalo perfeito temos um intervalo aumentado e se o diminuirmos pelo mesmo
+temos um intervalo diminuto.
+
+Os intervalos de segundas, terceiras, sextas e sétimas serão então os únicos
+que podem ser maiores e menores. Tendo o intervalo maior como ponto de
+partida---se o aumentarmos um semitom, teremos um intervalo aumentado; se o
+diminuirmos um semitom, um intervalo menos; se o voltarmos a diminuir por um
+semitom, um intervalo diminuto.
+
+\begin{table}[ht]
+    \centering
+    \caption{Diferenças entre as qualidades dos intervalos.}
+  \ \label{tabela_intervalos_qualidade}
+  \begin{tabular}{ccc}
+    \toprule
+    \textbf{Diferença} & \multicolumn{2}{c}{\textbf{Ponto de
+    Partida}}\\ \cmidrule(l){2-3}
+    \textbf{(Semitons)} & \textbf{Maior} & \textbf{Perfeito}\\
+    \midrule
+    +1 & Aumentado & Aumentado\\
+    0 & Maior & Perfeito\\
+    -1 & Menor & Diminuto\\
+    -2 & Diminuto &\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+O número de tons e semitons a que cada intervalo corresponde está no
+apêndice~\ref{intervalos_semitons}, mas uma maneira mais rápida de saber a
+qualidade do intervalo é se a segunda faz da parte da escala diatónica Maior
+que tem a primeira nota como tónica então o intervalo será perfeito ou maior
+(dependendo do número). Se não pertencer à escala, então contando o desvio em
+semitons da nota da escala conseguimos chegar à qualidade do intervalo
+(tabela~\ref{tabela_intervalos_qualidade}). Na
+figura~\ref{intervalos_qualidade} estão alguns exemplos.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[Terceira Menor]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              <cis' e>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \subfloat[Quinta Perfeita]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              <bes' f'>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \subfloat[Sexta Aumentada]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              <a' fis'>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \subfloat[Sétima Diminuta]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              <fis ees'>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \caption{Exemplos de intervalos.}
+    \label{intervalos_qualidade}
+\end{figure}
+
+\section {Tríades e Inversões}
+
+\subsection {Acordes e Tríades}
+
+Alguns instrumentos (como o piano) são capazes de tocar mais de uma nota ao
+mesmo tempo. Três ou mais notas tocadas ao mesmo tempo são chamados de
+\emph{acordes}. O tipo mais simples de acorde é a \emph{tríade}, que tem três
+notas.
+
+Todos os acordes são construídos com base numa nota, a \emph{tónica} do acorde
+(não confundir com tónica de escala), que lhe vai dar o nome. A esta,
+adicionam-se-lhe uma terceira e uma quinta.
+
+Assim como para os intervalos, cada acorde vai ter uma qualidade baseada na
+qualidade dos intervalos que o compôem:
+
+\begin{description}
+    \item[Maior] - um acorde maior vai ser composto por uma tónica, uma
+        terceira \emph{maior} e uma quinta \emph{perfeita}.
+    \item[Menor] - um acorde menor vai ser composto por uma tónica, uma
+        terceira \emph{menor} e uma quinta \emph{perfeita}.
+    \item[Aumentado] - um acorde aumentado vai ser composto por uma tónica, uma
+        terceira \emph{maior} e uma quinta \emph{aumentada}.
+    \item[Diminuto] - um acorde diminuto vai ser composto por uma tónica, uma
+        terceira \emph{menor} e uma quinta \emph{diminuta}.
+\end{description}
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[Dó Maior]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              <c' e g>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \subfloat[Fá♭ Aumentado]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              <fes aes c>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \subfloat[Si Diminuto]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              <b' d f>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \subfloat[Ré Menor]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              <d f a>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \caption{Exemplos de tríades.}
+\end{figure}
+
+Para ser mais fácil de incluir acordes numa partitura usa-se notação específica
+para acordes, com base na nomenclatura de notas americana. Alguns exemplos de
+tríades estão na tabela~\ref{tabela_triade_notacao}.
+
+\begin{table}[ht]
+  \centering
+  \caption{Exemplos de notação de tríades.}
+\ \label{tabela_triade_notacao}
+  \begin{tabular}{cc}
+    \toprule
+    \textbf{Nome da Tríade} & \textbf{Notação}\\
+    \midrule
+    Dó Maior & \HH.C.....\\
+    Fá♭ Aumentado & \HH.F♭..+...\\
+    Si Diminuto & \HH.B..o...\\
+    Ré Menor & \HH.D..-...\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection {Tríades Diatónicas}\ \label{triade_diatonica}
+
+Utilizando uma dada nota e a sua terceira e quinta da mesma escala, conseguimos
+construir uma \emph{tríade diatónica}. Ao conjunto de todas as tríades
+diatónicas possíveis para uma escala dá-se o nome de \emph{campo harmónico},
+que vai ser falado na secção~\ref{harmonizacao}.
+
+Como exemplo, a tríade diatónica construída a partir da dominante de Dó Maior
+será \textbf{Sol}---\textbf{Si}---\textbf{Ré}. Outros exemplos estão na
+figura~\ref{triade_diatonica_exemplos}.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[Sol Maior em Dó Maior]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              <g' b d>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \qquad
+    \subfloat[Lá Diminuto em Si♭ Maior]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              \key bes \major
+              <a' c ees>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \par
+    \subfloat[Dó♯ Menor em Lá Maior]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              \key a \major
+              <cis e gis>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \qquad
+    \subfloat[Lá♭ Menor em Sol♭ Maior]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              \key ges \major
+              <aes' ces ees>1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \caption{Exemplos de tríades diatónicas.}
+    \label{triade_diatonica_exemplos}
+\end{figure}
+
+Se construirmos os campos harmónicos de todas as escalas Maiores, conseguimos
+identificar um padrão---as tríades com a tónica na mesma posição da escala vão
+formar acordes com qualidade igual. Retomando o exemplo anterior, todas as
+tríades diatónicas com a dominante como tónica serão tríades maiores. A
+correspondência completa está na
+tabela~\ref{tabela_triade_diatonica_qualidade}.
+
+\begin{table}[ht]
+  \centering
+  \caption{Correspondência entre posição da tónica e qualidade da tríade.}
+  \label{tabela_triade_diatonica_qualidade}
+  \begin{tabular}{cc}
+    \toprule
+    \textbf{Posição Da Tónica} & \textbf{Qualidade}\\
+    \midrule
+    Tónica & Maior\\
+    Sobretónica & Menor\\
+    Mediante & Menor\\
+    Subdominante & Maior\\
+    Dominante & Maior\\
+    Sobredominante & Menor\\
+    Sensível & Diminuto\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Dado as qualidades serem sempre iguais relativamente à posição da tónica do
+acorde na escala e devido à possibilidade de transposição
+(secção~\ref{transposicao}) vai have vantagem em nos referir-mos às tríades de
+uma forma independente das escalas em que estão. Esta notação própria às
+tríades diatónicas é dada por numerais romanos, com maiúsculas para as tríades
+maiores, minúsculas para as menores e (semelhante aos acordes) um sinal
+\HH...+... para as aumentadas e um círculo \HH...o... para as diminutas.
+
+\begin{table}[ht]
+  \centering
+  \caption{Notação de tríades diatónicas.}
+  \begin{tabular}{cc}
+    \toprule
+    \textbf{Qualidade} & \textbf{Notação}\\
+    \midrule
+    Maior & I\\
+    Menor & i\\
+    Aumentada & I\HH...+...\\
+    Diminuta & i\HH...o...\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Agora podemos fazer a notação das tríades diatónicas para qualquer escala
+Maior, como na tabela~\ref{tabela_triade_diatonica_maior}.
+
+\begin{table}[ht]
+  \centering
+  \caption{Notação de tríades diatónicas para escalas Maiores.}
+  \label{tabela_triade_diatonica_maior}
+  \begin{tabular}{cc}
+    \toprule
+    \textbf{Posição Da Tónica} & \textbf{Notação}\\
+    \midrule
+    Tónica & I\\
+    Sobretónica & ii\\
+    Mediante & iii\\
+    Subdominante & IV\\
+    Dominante & V\\
+    Sobredominante & vi\\
+    Sensível & \HH.vii..o...\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection {Inversões}
+
+Todas as tríades podem ser \emph{invertidas}---cada tríade pode sofrer até 2
+inversões. Em cada inversão a nota mais grave é elevada uma oitava.
+
+Assim, na primeira inversão, a tónica seria elevada para a oitava acima e a
+nota mais grave da tríade passaria a ser a terceira. Na segunda inversão, tanto
+a tónica como a terceira seriam elevadas uma oitava e a nota mais grave
+passaria a ser a quinta. Na figura~\ref{triade_inversao_exemplos} estão alguns
+exemplos.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[Dó Maior 2ª Inversão]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              <g' c e>1
+              s1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \subfloat[Fá♭ Aumentado 1ª Inversão]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              <aes' c fes>1
+              s1
+            }
+          }
+          >>
+        \end{lilypond}
+    }\par
+    \subfloat[Si Diminuto 1ª Inversão]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              <d' f b>1
+              s1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \subfloat[Ré Menor 2ª Inversão]{
+        \begin[fragment]{lilypond}
+          \new Score \with {
+            \override TimeSignature #'transparent = ##t
+              defaultBarType = #""
+              \remove Bar_number_engraver
+          } <<
+          \new Staff {
+            \relative c' {
+              \clef treble
+              <a' d f>1
+              s1
+            }
+          }
+          >>
+        \end{lilypond}
+    }
+    \caption{Exemplos de inversões.}
+    \label{triade_inversao_exemplos}
+\end{figure}
+
+A notação para inversões é semelhante à das tríades não-invertidas, em que é
+especificado a nota mais grave (tabela~\ref{tabela_triade_inversao}).
+
+\begin{table}[ht]
+  \centering
+  \caption{Exemplos de notação de inversões.}
+  \label{tabela_triade_inversao}
+  \begin{tabular}{cc}
+    \toprule
+    \textbf{Nome da Tríade} & \textbf{Notação}\\
+    \midrule
+    Dó Maior 2ª Inversão & \HH.C...../G\\
+    Fá♭ Aumentado 1ª Inversão & \HH.F♭..+.../A♭\\
+    Si Diminuto 1ª Inversão & \HH.B..o.../D\\
+    Ré Menor 2ª Inversão & \HH.D..-.../A\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section {Transposição}\ \label{transposicao}
+
+A \emph{transposição} refere-se à alteração de uma coleção de notas por um
+intervalo constante, ascendente ou descendente. Consequentemente, a escala a
+que estas notas pertencem vai também mudar, com a excepção do intervalo
+uníssono ou oitava. Na figura~\ref{transposicao_exemplo} está um exemplo de
+transposição de Si♭ Maior para Ré Maior (2 tons ascendentes).
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[Si♭ Maior]{
+        \begin[fragment]{lilypond}
+          \new Staff {
+            \relative c'' {
+              \clef treble
+              \key bes \major
+              gis4. gis8 g4 ees
+              f4. f8 c'2
+            }
+          }
+        \end{lilypond}
+    }\par
+    \subfloat[Ré Maior]{
+        \begin[fragment]{lilypond}
+          \new Staff {
+            \transpose bes d' {
+                \relative c'' {
+                  \clef treble
+                  \key bes \major
+                  gis4. gis8 g4 ees
+                  f4. f8 c'2
+                }
+            }
+          }
+        \end{lilypond}
+    }
+    \caption{Exemplo de transposição de Dó Maior para Ré Maior.}
+    \label{transposicao_exemplo}
+\end{figure}
+
+As transposições, especialmente de acordes, nem sempre são tão simples como no
+exemplo~\ref{transposicao_exemplo}. Uma boa técnica para facilmente transpor
+entre duas quaiquer escalas é usar as posições relativas das notas a cada
+escala. Começamos por anotar qual a posição (com alterações) de cada à escala
+inicial e depois basta escrevermos as notas correspondentes às posições na nova
+escala (figura~\ref{transposicao_exemplo_2}).
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[Si♭ Maior com posições relativas das notas]{
+        \begin[fragment]{lilypond}
+          \new Staff {
+            \relative c'' {
+              \clef treble
+              \key bes \major
+              gis4._"6♯" gis8_"6♯" g4_"6" ees_"4"
+              f4._"5" f8_"5" c'2_"2"
+            }
+          }
+        \end{lilypond}
+    }\par
+    \subfloat[Ré Maior com posições relativas das notas]{
+        \begin[fragment]{lilypond}
+          \new Staff {
+            \transpose bes d' {
+                \relative c'' {
+                  \clef treble
+                  \key bes \major
+                  gis4._"6♯" gis8_"6♯" g4_"6" ees_"4"
+                  f4._"5" f8_"5" c'2_"2"
+                }
+            }
+          }
+        \end{lilypond}
+    }
+    \caption{Exemplo de transposição de Dó Maior para Ré Maior.}
+    \label{transposicao_exemplo_2}
+\end{figure}
+
+% \section {Modos}
+
+% - quais
+% - maiores/menores
+% - relaçoes entre maiores e entre menores
+% - escalas de cada
+% - triades de cada modo
+% - uso (?)
+
+% Um \emph{modo} é um tipo de escala musical associado a comportamentos melódicos
+% característicos. Isto é, cada modo vai ter um modo próprio de criar escalas e
+% exprime uma emoção, sonoridade e ambiente diferentes.
+
+% Uma maneira fácil de perceber a origem dos diferentes modos é utilizando uma
+% escala que de já falámos: Dó Maior. Esta começa em Dó Maior e para a criar
+% deixamos um tom entre cada nota, com excepção da terceira para a quarta e da
+% sétima para a oitava em que deixamos semitons. De outra maneira, começando em
+% Dó, utilizamos apenas as notas naturais.
+
+% Assumindo arbitrariamente que Dó é a primeira nota, acabámos de criar o
+% primeiro modo: \emph{Jónico} ou \emph{Maior}. Aplicando o mesmo método a cada
+% outra nota natural, chegamos a todos os outros modos. Por exemplo, utilizando a
+% segunda nota, Ré, e utlizando apenas as notas naturais, temos o segundo modo,
+% \emph{Dórico}, que terá semitons entre a segunda e terceira e entre a sexta e
+% sétima notas.
+
+% Já se falou do modo Maior na secção~\ref{escalas_diatonicas} mas na realidade
+% existem 7 modos diferentes:
+
+% \begin{enumerate}[I.]
+%     \item \emph{Jónico} (Maior);
+%     \item \emph{Dórico};
+%     \item \emph{Frígio};
+%     \item \emph{Lídio};
+%     \item \emph{Mixolídio};
+%     \item \emph{Aeólico} (Menor);
+%     \item \emph{Lócrio}.
+% \end{enumerate}
+
+% Cada um destes vai ter regras próprias para a criação de escalas
+% (tabela~\ref{tabela_modos_regras}).
+
+% \begin{table}[ht]
+%   \centering
+%   \caption{Regras de criação de escalas para cada modo.}
+%   \label{tabela_modos_regras}
+%   \begin{tabular}{cc}
+%     \toprule
+%     & \textbf{Escala}\\
+%     \textbf{Modo} & \textbf{Ordem dos Semitons}\\
+%     \midrule
+%     Maior & Entre 3ª e 4ª\\
+%           & Entre 7ª e 8ª\\
+%     Dórico & Entre 2ª e 3ª\\
+%            & Entre 6ª e 7ª\\
+%     Frígio & Entre 1ª e 2ª\\
+%            & Entre 5ª e 6ª\\
+%     Lídio & Entre 4ª e 5ª\\
+%           & Entre 7ª e 8ª\\
+%     Mixolídio & Entre 3ª e 4ª\\
+%               & Entre 6ª e 7ª\\
+%     Menor & Entre 2ª e 3ª\\
+%           & Entre 5ª e 6ª\\
+%     Lócrio & Entre 1ª e 2ª\\
+%            & Entre 4ª e 5ª\\
+%     \bottomrule
+%   \end{tabular}
+% \end{table}
+
+% \section {Harmonização}\ \label{harmonizacao}
+
+% - função de notas, acordes, inversões
+% - eixos
+
+\appendix
+
+\stepcounter{chapter}
+
+\chapter{Intervalos em Semitons}\ \label{intervalos_semitons}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{cc}
+    \toprule
+    \textbf{Número de Semitons} & \textbf{Intervalo}\\
+    \midrule
+    0 & Uníssono Perfeito\\
+      & Segunda Diminuta\\
+    \cmidrule(rl){1-2}
+    1 & Segunda Menor\\
+      & Uníssono Aumentado\\
+    \cmidrule(rl){1-2}
+    2 & Segunda Maior\\
+      & Terceira Diminuta\\
+    \cmidrule(rl){1-2}
+    3 & Terceira Menor\\
+      & Segunda Aumentada\\
+    \cmidrule(rl){1-2}
+    4 & Terceira Maior\\
+      & Quarta Diminuta\\
+    \cmidrule(rl){1-2}
+    5 & Quarta Perfeita\\
+      & Terceira Aumentada\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{cc}
+    \toprule
+    \textbf{Número de Semitons} & \textbf{Intervalo}\\
+    \midrule
+    6 & Quinta Diminuta\\
+      & Quarta Aumentada\\
+    \cmidrule(rl){1-2}
+    7 & Quinta Perfeita\\
+      & Sexta Diminuta\\
+    \cmidrule(rl){1-2}
+    8 & Sexta Menor\\
+      & Quinta Aumentada\\
+    \cmidrule(rl){1-2}
+    9 & Sexta Maior\\
+      & Sétima Diminuta\\
+    \cmidrule(rl){1-2}
+    10 & Sétima Menor\\
+       & Sexta Aumentada\\
+    \cmidrule(rl){1-2}
+    11 & Sétima Maior\\
+       & Oitava Diminuta\\
+    \cmidrule(rl){1-2}
+    12 & Oitava Perfeita\\
+       & Sétima Aumentada\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\end{document}

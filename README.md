@@ -2,8 +2,9 @@
 
 ## Download
 
-Podem fazer o download da versão mais recente da sebenta
-[aqui](https://github.com/gandag/musica_sebenta/releases/latest/download/musica.pdf).
+Podem fazer o download da versão mais recente da sebenta aqui:
+ * [Nível 1](https://github.com/gandag/musica_sebenta/releases/latest/download/nivel_1.pdf)
+ * [Nível 2](https://github.com/gandag/musica_sebenta/releases/latest/download/nivel_2.pdf)
 
 ## Contribuir
 
